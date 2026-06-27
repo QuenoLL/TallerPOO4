@@ -1,5 +1,7 @@
 package Dominio;
 
+import Logica.InterfazVisitor;
+
 public class Supporter extends Carta {
 
 	private int efectosPorTurno;
@@ -11,6 +13,11 @@ public class Supporter extends Carta {
 
 	public int getEfectosPorTurno() {
 		return efectosPorTurno;
+	}
+	
+	@Override
+	public int aceptar(InterfazVisitor visitante) {
+		return visitante.visitar(this);
 	}
 
 }

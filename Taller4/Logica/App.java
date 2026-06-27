@@ -33,6 +33,7 @@ public class App {
 		JFrame ventana = new JFrame("Universo TCG");
 		ventana.setSize(300,400);
 		ventana.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		ventana.setLocationRelativeTo(null);
 		
 		ventana.getContentPane().add(createGUI(ventana));
 		ventana.setVisible(true);

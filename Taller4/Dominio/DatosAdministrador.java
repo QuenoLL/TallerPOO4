@@ -6,7 +6,9 @@ import javax.swing.BoxLayout;
 import javax.swing.JButton;
 import javax.swing.JDialog;
 import javax.swing.JFrame;
+import javax.swing.JLabel;
 import javax.swing.JOptionPane;
+import javax.swing.JTextField;
 
 public class DatosAdministrador extends JDialog{
 
@@ -31,7 +33,11 @@ public class DatosAdministrador extends JDialog{
 	    add(modificar);
 	    add(exitButton);
 		
-	    agregar.addActionListener(e->{JOptionPane.showInputDialog(null, "Ingrese la carta a agregar: ");});
+	    agregar.addActionListener(e->{
+	    	JDialog miniVentana = new JDialog();
+	    	add( new JLabel("Ingrese la carta a agregar:"));
+	    	add( new JTextField());
+	    	});
 	    eliminar.addActionListener(e->{});
 	    modificar.addActionListener(e->{});
 		exitButton.addActionListener(e -> {

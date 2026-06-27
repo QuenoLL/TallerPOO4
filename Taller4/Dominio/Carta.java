@@ -1,5 +1,7 @@
 package Dominio;
 
+import Logica.InterfazVisitor;
+
 public abstract class Carta {
 	
 	protected String nombreCarta;
@@ -23,5 +25,7 @@ public abstract class Carta {
 	public void setTipo(String tipo) {
 		this.tipo = tipo;
 	}
+	
+	public abstract int aceptar(InterfazVisitor visitante);
 	
 }

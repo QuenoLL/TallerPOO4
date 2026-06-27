@@ -1,5 +1,7 @@
 package Dominio;
 
+import Logica.InterfazVisitor;
+
 public class Energy extends Carta{
 	
 	private String elemento;
@@ -11,6 +13,11 @@ public class Energy extends Carta{
 
 	public String getElemento() {
 		return elemento;
+	}
+	
+	@Override
+	public int aceptar(InterfazVisitor visitante) {
+		return visitante.visitar(this);
 	}
 
 }

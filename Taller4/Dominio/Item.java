@@ -1,5 +1,7 @@
 package Dominio;
 
+import Logica.InterfazVisitor;
+
 public class Item extends Carta{
 	
 	private int bonificacion;
@@ -11,6 +13,11 @@ public class Item extends Carta{
 
 	public int getBonificacion() {
 		return bonificacion;
+	}
+	
+	@Override
+	public int aceptar(InterfazVisitor visitante) {
+		return visitante.visitar(this);
 	}
 	
 
