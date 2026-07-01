@@ -102,8 +102,36 @@ public class DatosAdministrador extends JDialog{
 	    JDialog dialogoTipo = new JDialog(owner, "Datos carta", true);
 	    dialogoTipo.setLayout(new BoxLayout(dialogoTipo.getContentPane(), BoxLayout.Y_AXIS));
 	    
-	    JLabel nom = new JLabel("Ingrese el nombre de la carta");
+	    JLabel nom = new JLabel("Ingrese el nombre de la carta.");
 	    JTextField ingresoNom = new JTextField();
+	    
+	    JLabel rare = new JLabel("Ingrese la rareza de la carta.");
+	    JTextField ingresoRare = new JTextField();
+	    
+	    JLabel especifica = new JLabel();//Para los tipos de carta con ingreso unitario de datos...
+	    JTextField ingresoEspecifico = new JTextField();
+	    
+	    switch(string) {
+	    case "Pokemon":
+	    	JLabel daño = new JLabel("Ingrese el daño del pokemon.");
+	    	JTextField ingresoDaño = new JTextField();
+	    	
+	    	dialogoTipo.add(nom);
+	    	
+	    	break;
+	    	
+	    case "Item":
+	    	especifica.setText("Ingrese la bonificacion.");
+	    	break;
+	    	
+	    case "Supporter":
+	    	especifica.setText("Ingrese lso efectos por turnos.");
+	    	break;
+	    	
+	    case "Energy":
+	    	especifica.setText("Ingrese el elemento de la energia.");
+	    	break;
+	    }
 	    
 	    
 	    switch(string) {
