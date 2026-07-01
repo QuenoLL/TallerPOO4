@@ -13,7 +13,6 @@ public class SystemImpl implements InterfazSystem{
 	
 	private static InterfazSystem instance;
 	private static List<Carta> listaCartas = new ArrayList<Carta>();
-	private static List<Carta> mazo = new ArrayList<Carta>();
 	
 	private SystemImpl() {
 	}
