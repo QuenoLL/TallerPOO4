@@ -12,11 +12,28 @@ import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 
+/**
+ * Inicio de la aplicación.
+ * <p>
+ * Carga los datos desde archivos de texto al iniciar, y presenta al usuario
+ * un menú principal con acceso al menú de administración y al menú de coleccion.
+ *
+ * @author [Eugenio Cortés Egaña, Matías Núñez González]
+ * @version 1.0
+ */
+
 public class App {
 	
+	/**  Instancia unica del sistema implementado */
 	private static InterfazSystem system = SystemImpl.getSystema();
-	//private static Scanner entrada = new Scanner(System.in);
 	
+	/**
+     * Main de la aplicación.
+     * <p>
+     * Carga cartas desde el archivo, luego muestra el menú principal.
+     *
+     * @throws IOException si ocurre un error al leer los archivos de datos
+     */
 	public static void main(String[] args) throws IOException{
 		
 		App m = new App();
@@ -24,11 +41,18 @@ public class App {
 		
 	}
 
+	/**
+	 * Ejecuta los metodos asociados a la App.
+	 * @throws IOException
+	 */
 	private void ejecutar() throws IOException{
 		leerArch();
 		panel();
 	}
 
+	/**
+	 * Inicializa el JFrame que contiene todas las interacciones con el usario.
+	 */
 	private void panel() {
 		JFrame ventana = new JFrame("Universo TCG");
 		ventana.setSize(300,400);
@@ -39,6 +63,12 @@ public class App {
 		ventana.setVisible(true);
 	}
 
+	/**
+	 * Crea el contenido dentro del JFrame, ventana principal.
+	 * <p>
+	 * @param ventana Ventana principal JFrame
+	 * @return El JPanel que contiene las interacciones
+	 */
 	private JPanel createGUI(JFrame ventana) {
 		JPanel mainPanel = new JPanel(new BorderLayout());
 		
@@ -57,6 +87,11 @@ public class App {
 	}
 	
 
+	/**
+	 * Inicializa el boton que lleva al Dialogo de Administrador.
+	 * @param ventana Ventana principal JFrame
+	 * @return un boton interactivo JButton
+	 */
 	private JButton pestaña1(JFrame ventana) {
 		JButton b = new JButton("Administracion");
 		b.addActionListener(e ->{system.getDatosAdmin(ventana);
@@ -65,6 +100,10 @@ public class App {
 		return b;
 	}
 
+	/**
+	 * Inicializa el boton que lleva al Dialogo de Coleccion.
+	 * @return un boton interactivo JButton
+	 */
 	private JButton pestaña2() {
 		JButton b = new JButton("Ver Coleccion");
 		b.addActionListener(e ->{});
@@ -72,6 +111,10 @@ public class App {
 		return b;
 	}
 
+	/**
+	 * Lee el archivo "Sobres.txt" con la informacion pertinente.
+	 * @throws IOException
+	 */
 	private void leerArch() throws IOException{
 		File file = new File("txts/Sobres.txt");
 		Scanner lector = new Scanner(file);
@@ -80,7 +123,7 @@ public class App {
 			String linea = lector.nextLine();
 			String[] partes = linea.split(";");
 			
-			system.crearCarta(partes);
+			system.leerCarta(partes);
 		}
 		
 		lector.close();
