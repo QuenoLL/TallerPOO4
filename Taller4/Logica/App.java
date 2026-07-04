@@ -3,13 +3,16 @@
 package Logica;
 
 import java.awt.BorderLayout;
+import java.awt.Image;
 import java.io.File;
 import java.io.IOException;
 import java.util.Scanner;
 
 import javax.swing.BoxLayout;
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
+import javax.swing.JLabel;
 import javax.swing.JPanel;
 
 /**
@@ -59,7 +62,14 @@ public class App {
 		ventana.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		ventana.setLocationRelativeTo(null);
 		
-		ventana.getContentPane().add(createGUI(ventana));
+	    ImageIcon iconoOriginal = new ImageIcon("Images/Portada.png");
+	    Image imagenEscalada = iconoOriginal.getImage().getScaledInstance(300, 310, Image.SCALE_SMOOTH);
+	    ImageIcon iconoFinal = new ImageIcon(imagenEscalada);
+
+	    JLabel labelPortada = new JLabel(iconoFinal);
+	    ventana.add(labelPortada, BorderLayout.CENTER);   // <- imagen arriba
+
+	    ventana.add(createGUI(ventana), BorderLayout.NORTH);
 		ventana.setVisible(true);
 	}
 

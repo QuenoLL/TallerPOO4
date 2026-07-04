@@ -33,6 +33,14 @@ public abstract class Carta {
 		this.tipo = tipo;
 		this.formatoImagen = formatoImagen;
 	}
+	
+	/**
+	 * 
+	 * @return Nombre de la instancia de la carta.
+	 */
+	public String getNombreCarta() {
+		return nombreCarta;
+	}
 
 	/**
 	 * 
@@ -59,6 +67,14 @@ public abstract class Carta {
 	}
 	
 	/**
+	 * 
+	 * @return El tipo de la carta en especifico.
+	 */
+	public String getTipo() {
+		return tipo;
+	}
+
+	/**
 	 * Retorna el formato de la imagen (png, jpg, etc.)
 	 * @return Tipo del formato de la imagen.
 	 */
@@ -75,6 +91,12 @@ public abstract class Carta {
 	public abstract int aceptar(InterfazVisitor visitante);
 	
 	/**
+	 * Entrega el formato de la linea txt relacionada a la carta y a su archivo.txt
+	 * @return Linea txt de carta para "Sobres.txt"
+	 */
+	public abstract String lineaTxt();
+	
+	/**
 	 * Retorna la ruta de la carta pars su posterior puesta en imagen.
 	 * <p>
 	 * @return Ruta de la imagen
@@ -82,5 +104,14 @@ public abstract class Carta {
 	public String getRutaCarta() {
 		return this.nombreCarta+"."+this.formatoImagen;
 	}
+	
+	/**
+	 * Setea el atributo en especifico de las subclases de la clase {@link Carta}
+	 * <p>
+	 * Cada subclase implementa este atributo a su manera.
+	 * @param atributo Atributo a setear
+	 * @param dato Dato que sera seteado por el actual en la clase
+	 */
+	public abstract void setearAtributo(String atributo, String dato);
 	
 }

@@ -3,6 +3,8 @@ package Logica;
 import javax.swing.JFrame;
 
 import Dominio.DatosAdministrador;
+import Dominio.DatosColeccion;
+import Dominio.EstrategiaOrdenamiento;
 
 /**
  * Secuencia de contratos que implementan al programa de cartas TCG.
@@ -23,11 +25,10 @@ public interface InterfazSystem {
 	void leerCarta(String[] partes);
 	
 	/**
-	 * Retorna un String para sobrescribir el archivo "Sobres.txt" en la app.
+	 * Sobrescribe el archivo relacionado a las cartas Pokemon TCG.
 	 * <p>
-	 * @return Un String para sobrescribir el archivo.
 	 */
-	String sobrescribirArch();
+	void sobrescribirArch();
 	
 	/**
 	 * Crea una instancia y la retorna de la clase {@link DatosAdministrador}.
@@ -36,5 +37,60 @@ public interface InterfazSystem {
 	 * @return Una instancia de DatosAdministrador
 	 */
 	DatosAdministrador getDatosAdmin(JFrame owner);
-
+	
+	/**
+	 * Crea una instancia y la retorna de la clase {@link DatosColeccion}.
+	 * <p>
+	 * @param owner Ventana principal de la app JFrame
+	 * @return una instancia de DatosColeccion
+	 */
+	DatosColeccion getDatosColeccion(JFrame owner);
+	
+	/**
+	 * Elimina una carta de la lista estatica del sistema implementado del programa.
+	 * <p>
+	 * @param nombreCarta Nombre de la carta a eliminar
+	 * @return Mensaje correspondiente al si se elimino la carta o no.
+	 */
+	String eliminarCarta(String nombreCarta);
+	
+	/**
+	 * Entrega un conteo enumerado de todas las cartas del sistema de cartas Pokemon TCG
+	 * <p>
+	 * @return Un string enumerado de las cartas existentes
+	 */
+	String viewCartas();
+	
+	/**
+	 * Entrega el tamaño de la lista de cartas del sistema como un entero.
+	 * <p>
+	 * @return El tamaño de la lista de cartas
+	 */
+	int getTamañoLista();
+	
+	/**
+	 * Retorna el tipo de la carta pokemon
+	 * <p>
+	 * Vease {@link Carta}
+	 * @param indice Indice de la carta con respecto a la lista estatica del sistema
+	 * @return Tipo de la carta como un string.
+	 */
+	String getTipoCarta(int indice);
+	
+	/**
+	 * Modifica el atributo de la carta en especifico de tipo Pokemon {@link Pokemon}
+	 * <p>
+	 * @param indice Indice de la carta segun la lista estatica del sistema implementado
+	 * @param atributo Atributo de la carta Pokemon a modificar
+	 * @param dato Dato recolectado de la GUI para modificar el atributo
+	 */
+	void modificarAtributo(int indice, String atributo, String dato);
+	
+	/**
+	 * Ordena la lista estatica del sistema implementado con las cartas del programa existentes.
+	 * <p>
+	 * Esto relacionado con el patron estrategia.
+	 * @param estrategia Insatncia de la interfaz y sus clases implementadas.
+	 */
+	void ordenarCartas(EstrategiaOrdenamiento estrategia);
 }

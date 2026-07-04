@@ -1,12 +1,16 @@
 package Logica;
 
+import java.io.FileWriter;
 import java.util.ArrayList;
 import java.util.List;
 
 import javax.swing.JFrame;
+import javax.swing.JOptionPane;
 
 import Dominio.Carta;
 import Dominio.DatosAdministrador;
+import Dominio.DatosColeccion;
+import Dominio.EstrategiaOrdenamiento;
 import Dominio.FactoryCarta;
 
 /**
@@ -58,6 +62,7 @@ public class SystemImpl implements InterfazSystem{
 	@Override
 	public void leerCarta(String[] partes) {
 		listaCartas.add(FactoryCarta.crearCarta(partes));
+		sobrescribirArch();
 	}
 	
 	/**
@@ -73,15 +78,126 @@ public class SystemImpl implements InterfazSystem{
 	}
 	
 	/**
-	 * Retorna un String para sobrescribir el archivo "Sobres.txt" en la app.
+	 * Crea una instancia y la retorna de la clase {@link DatosColeccion}.
 	 * <p>
-	 * @return Un String para sobrescribir el archivo.
+	 * @param owner Ventana principal de la app JFrame
+	 * @return una instancia de DatosColeccion
 	 */
 	@Override
-	public String sobrescribirArch() {
-		// TODO Auto-generated method stub
-		return null;
+	public DatosColeccion getDatosColeccion(JFrame owner) {
+		DatosColeccion d = new DatosColeccion(owner, this);
+		return d;
 	}
 	
+	/**
+	 * Sobrescribe el archivo relacionado a las cartas Pokemon TCG.
+	 * <p>
+	 */
+	@Override
+	public void sobrescribirArch() {
+		try {
+			String arch = "txts/Sobres.txt";
+			FileWriter escritor = new FileWriter(arch);
 
+			for (int i = 0; i < listaCartas.size(); i++) {
+				if (i == 0) {
+					escritor.write(listaCartas.get(i).lineaTxt());
+				} else {
+					escritor.write("\n" + listaCartas.get(i).lineaTxt());
+				}
+			}
+
+			escritor.close();
+
+		} catch (Exception e) {
+			JOptionPane.showMessageDialog(null, "ERROR. "+e.getMessage());
+		}
+	}
+	
+	/**
+	 * Elimina una carta de la lista estatica del sistema implementado del programa.
+	 * <p>
+	 * @param nombreCarta Nombre de la carta a eliminar
+	 * @return Mensaje correspondiente al si se elimino la carta o no.
+	 */
+    @Override
+	public String eliminarCarta(String nombreCarta) {
+	for(int i = 0; i < listaCartas.size(); i++) {
+		if(listaCartas.get(i).getNombreCarta().equalsIgnoreCase(nombreCarta)) {
+			
+			listaCartas.remove(i);
+			sobrescribirArch();
+			return "Se ha eliminado exitosamenta a la carta "+nombreCarta;
+			
+		}
+	}
+	
+	return "No se ha podido encontrar ninguna carta llamada "+nombreCarta;
+	}
+    
+	/**
+	 * Entrega un conteo enumerado de todas las cartas del sistema de cartas Pokemon TCG.
+	 * <p>
+	 * @return Un string enumerado de las cartas existentes
+	 */
+    @Override
+    public String viewCartas() {
+		String list = "<html>";
+		int c = 1;
+
+		for (Carta carta : listaCartas) {
+			list += c + ". " + carta.getNombreCarta() +" - "+ carta.getTipo()+"<br>";
+			c++;
+		}
+		list += "</html>";
+
+		return list;
+    }
+    
+	/**
+	 * Entrega el tamaño de la lista de cartas del sistema como un entero.
+	 * <p>
+	 * @return El tamaño de la lista de cartas
+	 */
+    @Override
+    public int getTamañoLista() {
+    	return listaCartas.size();
+    }
+    
+	/**
+	 * Retorna el tipo de la carta pokemon.
+	 * <p>
+	 * Vease {@link Carta}
+	 * @param indice Indice de la carta con respecto a la lista estatica del sistema
+	 * @return Tipo de la carta como un string.
+	 */
+    @Override
+    public String getTipoCarta(int indice) {
+    	return listaCartas.get(indice).getTipo();
+    }
+	
+	/**
+	 * Modifica el atributo de la carta en especifico de tipo Pokemon {@link Pokemon}
+	 * <p>
+	 * @param indice Indice de la carta segun la lista estatica del sistema implementado
+	 * @param atributo Atributo de la carta Pokemon a modificar
+	 * @param dato Dato recolectado de la GUI para modificar el atributo
+	 */
+    @Override
+    public void modificarAtributo(int indice, String atributo, String dato) {
+    	listaCartas.get(indice).setearAtributo(atributo, dato);
+    	sobrescribirArch();
+    }
+    
+	/**
+	 * Ordena la lista estatica {@link #listaCartas} sistema implementado con las cartas del programa existentes.
+	 * <p>
+	 * Esto relacionado con el patron estrategia.
+	 * @param estrategia Insatncia de la interfaz y sus clases implementadas.
+	 */
+    @Override
+    public void ordenarCartas(EstrategiaOrdenamiento estrategia) {
+		estrategia.ordenamiento(listaCartas);
+    	
+    }
 }

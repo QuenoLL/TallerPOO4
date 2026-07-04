@@ -48,5 +48,22 @@ public class Energy extends Carta{
 	public int aceptar(InterfazVisitor visitante) {
 		return visitante.visitar(this);
 	}
+	
+	/**
+	 * Entrega el formato de la linea txt relacionada a la carta y a su archivo.txt
+	 * @return Linea txt de carta para "Sobres.txt"
+	 */
+	@Override
+	public String lineaTxt() {
+		return this.nombreCarta+";"+this.rareza+";"+this.tipo+";"+this.elemento;
+	}
+	
+	@Override
+	public void setearAtributo(String atributo, String dato) {
+		if(atributo.equalsIgnoreCase("elemento")) {
+			this.elemento = dato;
+		}
+	}
+	
 
 }
