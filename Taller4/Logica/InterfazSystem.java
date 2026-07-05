@@ -1,10 +1,13 @@
 package Logica;
 
+import java.util.List;
+
 import javax.swing.JFrame;
 
+import Dominio.Carta;
 import Dominio.DatosAdministrador;
 import Dominio.DatosColeccion;
-import Dominio.EstrategiaOrdenamiento;
+import Dominio.DetalleCarta;
 
 /**
  * Secuencia de contratos que implementan al programa de cartas TCG.
@@ -85,12 +88,26 @@ public interface InterfazSystem {
 	 * @param dato Dato recolectado de la GUI para modificar el atributo
 	 */
 	void modificarAtributo(int indice, String atributo, String dato);
-	
+
 	/**
 	 * Ordena la lista estatica del sistema implementado con las cartas del programa existentes.
 	 * <p>
 	 * Esto relacionado con el patron estrategia.
-	 * @param estrategia Insatncia de la interfaz y sus clases implementadas.
+	 * @param tipoEstrategia String que contiene el tipo de estrategia a implementar.
 	 */
-	void ordenarCartas(EstrategiaOrdenamiento estrategia);
+	void ordenarCartas(String tipoEstrategia);
+	
+	/**
+	 * 
+	 * @return Lista de las en el sistema de cartas TCG.
+	 */
+	List<Carta> getListaCartas();
+	
+	/**
+	 * Retorna una instancia del JDialog DetalleCarta
+	 * <p>
+	 * @param owner Ventana padre JFrame
+	 * @return Una instancia del JDialog DetalleCarta {@link DetalleCarta}
+	 */
+	DetalleCarta getDetalleCarta(JFrame owner,Carta carta);
 }

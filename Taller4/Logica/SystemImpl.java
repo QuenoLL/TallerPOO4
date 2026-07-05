@@ -10,8 +10,12 @@ import javax.swing.JOptionPane;
 import Dominio.Carta;
 import Dominio.DatosAdministrador;
 import Dominio.DatosColeccion;
+import Dominio.DetalleCarta;
 import Dominio.EstrategiaOrdenamiento;
 import Dominio.FactoryCarta;
+import Dominio.Nombre;
+import Dominio.Poder;
+import Dominio.Rareza;
 
 /**
  * <tt>SystemImpl</tt> es una implementacion del sistema de cartas TCG.
@@ -190,14 +194,50 @@ public class SystemImpl implements InterfazSystem{
     }
     
 	/**
-	 * Ordena la lista estatica {@link #listaCartas} sistema implementado con las cartas del programa existentes.
+	 * Ordena la lista estatica del sistema implementado con las cartas del programa existentes.
 	 * <p>
 	 * Esto relacionado con el patron estrategia.
-	 * @param estrategia Insatncia de la interfaz y sus clases implementadas.
+	 * @param tipoEstrategia String que contiene el tipo de estrategia a implementar.
 	 */
     @Override
-    public void ordenarCartas(EstrategiaOrdenamiento estrategia) {
-		estrategia.ordenamiento(listaCartas);
+    public void ordenarCartas(String tipoEstrategia) {
+    	EstrategiaOrdenamiento estrategia = null;
     	
+    	switch(tipoEstrategia) {
+    	case "nombre":
+    		estrategia = new Nombre();
+    		break;
+    		
+    	case "rareza":
+    		estrategia = new Rareza();
+    		break;
+    		
+    	case "poder":
+    		estrategia = new Poder();
+    		break;
+    	}
+    	estrategia.ordenamiento(listaCartas);
     }
+
+
+    /**
+     * @return Lista de cartas del sistema implementado {@link #listaCartas}.
+     */
+	public  List<Carta> getListaCartas() {
+		return listaCartas;
+	}
+	
+	/**
+	 * Retorna una instancia del JDialog DetalleCarta
+	 * <p>
+	 * @param owner Ventana padre JFrame
+	 * @return Una instancia del JDialog DetalleCarta {@link DetalleCarta}
+	 */
+	@Override
+	public DetalleCarta getDetalleCarta(JFrame owner,Carta carta) {
+		DetalleCarta d = new DetalleCarta(owner,carta);
+		return d;
+	}
+    
+    
 }

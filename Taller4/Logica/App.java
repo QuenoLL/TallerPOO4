@@ -86,7 +86,7 @@ public class App {
 		pestañas.setLayout(new BoxLayout(pestañas, BoxLayout.LINE_AXIS));
 		
 		JButton pestaña1 = pestaña1(ventana);
-		JButton pestaña2 = pestaña2();
+		JButton pestaña2 = pestaña2(ventana);
 		
 		pestañas.add(pestaña1);
 		pestañas.add(pestaña2);
@@ -114,9 +114,11 @@ public class App {
 	 * Inicializa el boton que lleva al Dialogo de Coleccion.
 	 * @return un boton interactivo JButton
 	 */
-	private JButton pestaña2() {
+	private JButton pestaña2(JFrame ventana) {
 		JButton b = new JButton("Ver Coleccion");
-		b.addActionListener(e ->{});
+		b.addActionListener(e ->{
+			system.getDatosColeccion(ventana);
+		});
 		
 		return b;
 	}
