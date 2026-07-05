@@ -63,5 +63,16 @@ public class Supporter extends Carta {
 			this.efectosPorTurno = Integer.parseInt(dato);
 		}
 	}
+	
+	/**
+	 * Entrega una linea de texto, con un formato necesario para la muestra modular de la carta.
+	 * <p>
+	 * @return Linea de texto con los atributos en especifico de la carta.
+	 * @see DetalleCarta
+	 */
+	@Override
+	public String getEspecifico() {
+		return "Efectos por turno: "+this.efectosPorTurno;
+	}
 
 }

@@ -6,7 +6,9 @@ public class Rareza implements EstrategiaOrdenamiento{
 	
 	@Override
 	public void ordenamiento(List<Carta> listaCartas) {
-		// TODO Auto-generated method stub
+		for(int i = 0; i < listaCartas.size(); i++) {
+			
+		}
 		
 	}
 }

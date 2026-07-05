@@ -58,11 +58,26 @@ public class Energy extends Carta{
 		return this.nombreCarta+";"+this.rareza+";"+this.tipo+";"+this.elemento;
 	}
 	
+	/**
+	 * Sete el atributo en especifico de la instancia de Energy, que seria elemento.
+	 * <p>
+	 */
 	@Override
 	public void setearAtributo(String atributo, String dato) {
 		if(atributo.equalsIgnoreCase("elemento")) {
 			this.elemento = dato;
 		}
+	}
+	
+	/**
+	 * Entrega una linea de texto, con un formato necesario para la muestra modular de la carta.
+	 * <p>
+	 * @return Linea de texto con el elemento en especifico de la carta.
+	 * @see DetalleCarta
+	 */
+	@Override
+	public String getEspecifico() {
+		return "Elemento: "+this.elemento;
 	}
 	
 

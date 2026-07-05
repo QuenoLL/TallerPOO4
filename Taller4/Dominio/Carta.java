@@ -75,6 +75,14 @@ public abstract class Carta {
 	}
 
 	/**
+	 * 
+	 * @return La rareza de la carta en especifico.
+	 */
+	public int getRareza() {
+		return rareza;
+	}
+
+	/**
 	 * Retorna el formato de la imagen (png, jpg, etc.)
 	 * @return Tipo del formato de la imagen.
 	 */
@@ -113,5 +121,13 @@ public abstract class Carta {
 	 * @param dato Dato que sera seteado por el actual en la clase
 	 */
 	public abstract void setearAtributo(String atributo, String dato);
+	
+	/**
+	 * Entrega una linea de texto, con un formato necesario para la muestra modular de la carta.
+	 * <p>
+	 * @return Linea de texto con los atributos en especifico de la carta.
+	 * @see DetalleCarta
+	 */
+	public abstract String getEspecifico();
 	
 }

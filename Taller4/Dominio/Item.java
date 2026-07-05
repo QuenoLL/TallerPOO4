@@ -62,7 +62,17 @@ public class Item extends Carta{
 		if(atributo.equalsIgnoreCase("bonificacion")) {
 			this.bonificacion = Integer.parseInt(dato);
 		}
-		
+	}
+	
+	/**
+	 * Entrega una linea de texto, con un formato necesario para la muestra modular de la carta.
+	 * <p>
+	 * @return Linea de texto con los atributos en especifico de la carta.
+	 * @see DetalleCarta
+	 */
+	@Override
+	public String getEspecifico() {
+		return "Bonificacion: "+this.bonificacion;
 	}
 	
 

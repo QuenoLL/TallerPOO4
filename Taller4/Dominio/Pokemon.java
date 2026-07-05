@@ -81,6 +81,18 @@ public class Pokemon extends Carta{
 		}
 	}
 	
+	/**
+	 * Entrega una linea de texto, con un formato necesario para la muestra modular de la carta.
+	 * <p>
+	 * @return Linea de texto con los atributos daño y cantidad de energia en especifico de la carta.
+	 * @see DetalleCarta
+	 */
+	@Override
+	public String getEspecifico() {
+		return "<html>Daño: "+this.daño+"<br>"
+				+"Cantidad Energia: "+this.cantidadEnergias+"</html>";
+	}
+	
 	
 		
 
