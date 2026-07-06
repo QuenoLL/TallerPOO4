@@ -10,6 +10,8 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
+import Logica.InterfazSystem;
+
 /**
  * <tt>DetalleCarta</tt> es una clase correspondiente a una extension de un JDialog.
  * <p>
@@ -19,9 +21,12 @@ import javax.swing.JPanel;
  * @see JDialog
  */
 public class DetalleCarta extends JDialog{
+	
+	private InterfazSystem sistema;
 
-	public DetalleCarta(JFrame owner, Carta carta) {
+	public DetalleCarta(JFrame owner, Carta carta,InterfazSystem sistema) {
 		super(owner,"Referencia modular carta", true);
+		this.sistema = sistema;
 		initComponents(carta,owner);
 	}
 
@@ -43,6 +48,10 @@ public class DetalleCarta extends JDialog{
 		JPanel panelIzquierda = new JPanel();
 		panelIzquierda.setLayout(new BoxLayout(panelIzquierda, BoxLayout.Y_AXIS));
 		
+		//Agregamos un pael a la derecha dinde iran los atributos especificos de la carta ademas de su poder correspondiente.
+		JPanel panelDerecha = new JPanel();
+		panelDerecha.setLayout(new BoxLayout(panelDerecha, BoxLayout.Y_AXIS));
+		
 		
 		//Agregamos el icono de la carta en especifico.
 		ImageIcon iconoOriginal = new ImageIcon("Images/" + carta.getRutaCarta());
@@ -56,15 +65,19 @@ public class DetalleCarta extends JDialog{
 	    JLabel labelImagen = new JLabel(iconoFinal);
 	    add(labelImagen, BorderLayout.CENTER); 
 	    
+	    //Izquierda.
 	    JLabel nom = new JLabel("Nombre: "+carta.getNombreCarta());
 	    JLabel rare = new JLabel("Rareza: "+carta.getRareza());
-	    
 	    panelIzquierda.add(nom);
 	    panelIzquierda.add(rare);
 	    panelStats.add(panelIzquierda, BorderLayout.WEST);
 	    
+	    //Derecha.
+	    JLabel poder = new JLabel("Poder: "+sistema.getPoderCarta(carta));
 	    JLabel especifico = new JLabel(carta.getEspecifico());
-	    panelStats.add(especifico, BorderLayout.EAST);
+	    panelDerecha.add(especifico);
+	    panelDerecha.add(poder);
+	    panelStats.add(panelDerecha, BorderLayout.EAST);
 	    
 	    //En esta ocasion pack() no podria ir ya que dispone que la ventana se ajuste a sus componentes y nosotros queremos darle un tamaño fijo.
 		setLocationRelativeTo(getOwner());

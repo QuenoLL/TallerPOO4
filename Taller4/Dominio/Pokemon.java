@@ -68,6 +68,13 @@ public class Pokemon extends Carta{
 		return this.nombreCarta+";"+this.rareza+";"+this.tipo+";"+this.daño+";"+this.cantidadEnergias;
 	}
 	
+	/**
+	 * Setea el atributo en especifico de las subclases de la clase {@link Carta}
+	 * <p>
+	 * Setea segun la opcion del usuario el daño o la cantidad de energias de la clase pokemon
+	 * @param atributo Atributo a setear, ya sea daño o cantidad de energias.
+	 * @param dato Dato que sera seteado por el actual en la clase
+	 */
 	@Override
 	public void setearAtributo(String atributo, String dato) {
 		switch(atributo) {

@@ -57,6 +57,13 @@ public class Item extends Carta{
 		return this.nombreCarta+";"+this.rareza+";"+this.tipo+";"+this.bonificacion;
 	}
 	
+	/**
+	 * Setea el atributo en especifico de las subclases de la clase {@link Carta}
+	 * <p>
+	 * Setea la bonificacion de la clase Item.
+	 * @param atributo Atributo bonificacion el cual sera seteado
+	 * @param dato Dato que sera seteado por el actual en la clase
+	 */
 	@Override
 	public void setearAtributo(String atributo, String dato) {
 		if(atributo.equalsIgnoreCase("bonificacion")) {

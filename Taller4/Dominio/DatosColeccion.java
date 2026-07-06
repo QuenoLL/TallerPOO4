@@ -67,14 +67,17 @@ public class DatosColeccion extends JDialog{
         
         porRareza.addActionListener(e->{
         	sistema.ordenarCartas("rareza");
+        	actualizarPantalla(owner);
         });
         
         porNombre.addActionListener(e->{
         	sistema.ordenarCartas("nombre");
+        	actualizarPantalla(owner);
         });
         
         porPoder.addActionListener(e->{
         	sistema.ordenarCartas("poder");
+        	actualizarPantalla(owner);
         });
         
         //Metodo para actualizar como se nos muestran las cartas en la pantalla

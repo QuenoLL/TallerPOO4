@@ -110,4 +110,14 @@ public interface InterfazSystem {
 	 * @return Una instancia del JDialog DetalleCarta {@link DetalleCarta}
 	 */
 	DetalleCarta getDetalleCarta(JFrame owner,Carta carta);
+	
+	/**
+	 * Retorna el poder de una instancia de una carta.
+	 * <p>
+	 * Cabe recalcar que esta instancia nunca va provenir de la App o Main, si no de los metodos necesarios del DetalleCarta.
+	 * @param carta Instancia de la carta.
+	 * @return Poder de una carta.
+	 * @see DetalleCarta
+	 */
+	int getPoderCarta(Carta carta);
 }

@@ -235,8 +235,22 @@ public class SystemImpl implements InterfazSystem{
 	 */
 	@Override
 	public DetalleCarta getDetalleCarta(JFrame owner,Carta carta) {
-		DetalleCarta d = new DetalleCarta(owner,carta);
+		DetalleCarta d = new DetalleCarta(owner,carta,this);
 		return d;
+	}
+	
+	/**
+	 * Retorna el poder de una instancia de una carta.
+	 * <p>
+	 * Cabe recalcar que esta instancia nunca va provenir de la App o Main, si no de los metodos necesarios del DetalleCarta.
+	 * @param carta Instancia de la carta.
+	 * @return Poder de una carta.
+	 * @see DetalleCarta
+	 */
+	@Override
+	public int getPoderCarta(Carta carta) {
+		InterfazVisitor visitor = new VisitanteCartas();
+		return carta.aceptar(visitor);
 	}
     
     

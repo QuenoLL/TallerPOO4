@@ -57,6 +57,13 @@ public class Supporter extends Carta {
 		return this.nombreCarta+";"+this.rareza+";"+this.tipo+";"+this.efectosPorTurno;
 	}
 	
+	/**
+	 * Setea el atributo en especifico de las subclases de la clase {@link Carta}
+	 * <p>
+	 * Setea el atributo efectos por turno de la clase Supporter.
+	 * @param atributo Atributo efecto de la clase Supporter
+	 * @param dato Dato que sera seteado por el actual en la clase
+	 */
 	@Override
 	public void setearAtributo(String atributo, String dato) {
 		if(atributo.equalsIgnoreCase("efecto")) {

@@ -29,8 +29,10 @@ public class DatosAdministrador extends JDialog{
 	private InterfazSystem sistema;
 	
 	/**
-	 * 
-	 * @param owner
+	 * Crea una instancia de la clase {@link DatosAdministrador}.
+	 * <p>
+	 * @param owner Ventana principal JFrame.
+	 * @param sistema Instancia del sistema implementado del programa.
 	 */
 	public DatosAdministrador(JFrame owner, InterfazSystem sistema) {
 		super(owner, "Administracion", true);
@@ -577,19 +579,31 @@ public class DatosAdministrador extends JDialog{
 	}
 
 
-	
+
+	/**
+	 * <tt>EscuchadorCierreVentana</tt> es una clase para poder manejar el cerrado de ventana del JDialog
+	 * <p>
+	 * @see WindowAdapter
+	 */
 	private class EscuchadorCierreVentana extends WindowAdapter {
 		public void windowClosing(java.awt.event.WindowEvent windowEvent) {
 			onCancel();
 		}
 	}
 	
-	
+	/**
+	 * Cancela todas las pesatñas habias y por haber instanciadas por esta ventana.
+	 */
 	private void onCancel()
     {
         dispose();
     }
 
+	/**
+	 * Agrega funcionalidades basicas para la salida a luz del JDialog.
+	 * <p>
+	 * @return Booleano para el click del guardado (no utilizado realmente).
+	 */
     public boolean showDialog()
     {
         pack();

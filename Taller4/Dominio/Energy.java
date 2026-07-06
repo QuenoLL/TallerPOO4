@@ -59,8 +59,11 @@ public class Energy extends Carta{
 	}
 	
 	/**
-	 * Sete el atributo en especifico de la instancia de Energy, que seria elemento.
+	 * Setea el atributo en especifico de las subclases de la clase {@link Carta}
 	 * <p>
+	 * Setea el elemento de la clase Energy.
+	 * @param atributo Atributo elemento a setear.
+	 * @param dato Dato que sera seteado por el actual en la clase
 	 */
 	@Override
 	public void setearAtributo(String atributo, String dato) {
